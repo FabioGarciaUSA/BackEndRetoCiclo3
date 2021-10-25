@@ -11,26 +11,26 @@ import java.util.Optional;
 
 @Service
 public class GameService {
-    
+
     @Autowired
     private GameRepository gameRepository;
-    
-    public List<Game> getAll(){
+
+    public List<Game> getAll() {
         return gameRepository.getAll();
     }
-    
-    public Optional<Game> getGame(int id){
+
+    public Optional<Game> getGame(int id) {
         return gameRepository.getGames(id);
     }
 
-    public Game save(Game g){
-        if (g.getId()==null){
+    public Game save(Game g) {
+        if (g.getId() == null) {
             return gameRepository.save(g);
-        }else {
+        } else {
             Optional<Game> gaux = gameRepository.getGames(g.getId());
-            if (gaux.isEmpty()){
+            if (gaux.isEmpty()) {
                 return gameRepository.save(g);
-            }else{
+            } else {
                 return g;
             }
         }
