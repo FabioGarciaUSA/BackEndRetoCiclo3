@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "Game")
@@ -21,6 +22,20 @@ public class Game implements Serializable {
     @JoinColumn(name="categoryId")
     @JsonIgnoreProperties("games")
     private Category category;
+
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "game")
+    @JsonIgnoreProperties({"game","client"})
+    private List<Message> messages;
+
+    /*
+
+    private List<Mensaje> messages;
+
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "farm")
+    @JsonIgnoreProperties({"farm","message"})
+    public List<Reservacion> reservations;
+
+     */
 
     public Integer getId() {
         return id;
@@ -68,5 +83,13 @@ public class Game implements Serializable {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
     }
 }
