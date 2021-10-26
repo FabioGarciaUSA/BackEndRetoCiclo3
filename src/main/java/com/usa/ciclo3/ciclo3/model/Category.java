@@ -17,9 +17,14 @@ public class Category implements Serializable {
     private String description;
 
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "category")
-    @JsonIgnoreProperties("category")
+    @JsonIgnoreProperties({"category","message"})
     private List<Game> games;
 
+    /*
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy="category")
+    @JsonIgnoreProperties({"category","message"})
+    private List<Finca> farms;
+     */
     public Integer getId() {
         return id;
     }
@@ -51,4 +56,5 @@ public class Category implements Serializable {
     public void setGames(List<Game> games) {
         this.games = games;
     }
+
 }

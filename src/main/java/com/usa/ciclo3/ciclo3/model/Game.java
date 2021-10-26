@@ -27,15 +27,9 @@ public class Game implements Serializable {
     @JsonIgnoreProperties({"game","client"})
     private List<Message> messages;
 
-    /*
-
-    private List<Mensaje> messages;
-
-    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "farm")
-    @JsonIgnoreProperties({"farm","message"})
-    public List<Reservacion> reservations;
-
-     */
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "game")
+    @JsonIgnoreProperties({"game","message"})
+    public List<Reservation> reservations;
 
     public Integer getId() {
         return id;
@@ -92,4 +86,13 @@ public class Game implements Serializable {
     public void setMessages(List<Message> messages) {
         this.messages = messages;
     }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }
+
 }
