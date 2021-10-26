@@ -8,14 +8,32 @@ import java.util.List;
 
 @Entity
 @Table(name = "Game")
+/**
+ * @version Entidad de la tabla Game
+ */
 public class Game implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    /**
+     * @param id Identificador autocreado para la tabla Game.
+     */
     private Integer id;
-    private String developer;
-    private Integer year;
+    /**
+     * @param name Nombre del juego.
+     */
     private String name;
+    /**
+     * @param developer Nombre de la desarroladora del juego.
+     */
+    private String developer;
+    /**
+     * @param year Año de publicacion del juego.
+     */
+    private Integer year;
+    /**
+     * @param description Descripcion del juego.
+     */
     private String description;
 
     @ManyToOne
