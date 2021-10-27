@@ -29,4 +29,10 @@ public class GameRepository {
     public Game save(Game p) {
         return gameCrudRepository.save(p);
     }
+
+    //Metodo para borrar game
+    public void delete(Game juego) {
+        gameCrudRepository.delete(juego);
+    }
+
 }

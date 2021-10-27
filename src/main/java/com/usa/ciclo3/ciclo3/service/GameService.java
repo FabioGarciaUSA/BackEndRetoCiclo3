@@ -36,4 +36,41 @@ public class GameService {
         }
     }
 
+    public Game update(Game juego){
+        if(juego.getId()!=null){
+            Optional<Game> e=gameRepository.getGames(juego.getId());
+            if(!e.isEmpty()){
+                if(juego.getName()!=null){
+                    e.get().setName(juego.getName());
+                }
+                if(juego.getDeveloper()!=null){
+                    e.get().setDeveloper(juego.getDeveloper());
+                }
+                if(juego.getYear()!=null){
+                    e.get().setYear(juego.getYear());
+                }
+                if(juego.getDescription()!=null){
+                    e.get().setDescription(juego.getDescription());
+                }
+                if(juego.getCategory()!=null){
+                    e.get().setCategory(juego.getCategory());
+                }
+                gameRepository.save(e.get());
+                return e.get();
+            }else{
+                return juego;
+            }
+        }else{
+            return juego;
+        }
+    }
+
+    public boolean deleteJuego(int juegoId) {
+        Boolean aBoolean = getGame(juegoId).map(juego -> {
+            gameRepository.delete(juego);
+            return true;
+        }).orElse(false);
+        return aBoolean;
+    }
+
 }

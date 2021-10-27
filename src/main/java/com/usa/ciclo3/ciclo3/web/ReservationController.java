@@ -36,4 +36,15 @@ public class ReservationController {
     public Reservation save(@RequestBody Reservation r) {
         return reservationService.save(r);
     }
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Reservation update(@RequestBody Reservation reservacion) {
+        return reservationService.update(reservacion);
+    }
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean delete(@PathVariable("id") int reservationId) {
+        return reservationService.deleteReservation(reservationId);
+    }
 }

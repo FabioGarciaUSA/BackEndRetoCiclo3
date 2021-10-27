@@ -25,8 +25,13 @@ public class ClientRepository {
     }
 
     //Metodo para guardar un objeto cliente, tambien sirve para actualizar
-    public Client save (Client c) {
+    public Client save(Client c) {
         return clientCrudRepository.save(c);
+    }
+
+    //Metodo para borarr cliente
+    public void delete(Client cliente) {
+        clientCrudRepository.delete(cliente);
     }
 
 }

@@ -1,5 +1,6 @@
 package com.usa.ciclo3.ciclo3.repository;
 
+import com.usa.ciclo3.ciclo3.model.Client;
 import com.usa.ciclo3.ciclo3.model.Reservation;
 import com.usa.ciclo3.ciclo3.repository.crud.ReservationCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,11 @@ public class ReservationRepository {
     //Metodo para guardar un objeto games, tambien sirve para actualizar
     public Reservation save(Reservation c) {
         return reservationCrudRepository.save(c);
+    }
+
+    //Metodo para borarr reservacion
+    public void delete(Reservation reservacion) {
+        reservationCrudRepository.delete(reservacion);
     }
 
 }

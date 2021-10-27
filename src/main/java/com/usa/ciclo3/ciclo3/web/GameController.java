@@ -33,4 +33,16 @@ public class GameController {
     public Game save(@RequestBody Game g) {
         return gameService.save(g);
     }
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Game update(@RequestBody Game finca) {
+        return gameService.update(finca);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean delete(@PathVariable("id") int juegoId) {
+        return gameService.deleteJuego(juegoId);
+    }
 }

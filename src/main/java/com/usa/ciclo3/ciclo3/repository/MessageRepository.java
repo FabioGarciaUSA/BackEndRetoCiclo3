@@ -28,4 +28,10 @@ public class MessageRepository {
     public Message save(Message c) {
         return messageCrudRepository.save(c);
     }
+
+    //Metodo para borarr mensaje
+    public void delete(Message cliente) {
+        messageCrudRepository.delete(cliente);
+    }
+
 }

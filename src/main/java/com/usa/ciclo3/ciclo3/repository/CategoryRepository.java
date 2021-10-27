@@ -28,4 +28,12 @@ public class CategoryRepository {
     public Category save(Category c) {
         return categoryCrudRepository.save(c);
     }
+
+    //Metodo para borrar un objeto
+    public void delete(Category c) {
+        categoryCrudRepository.delete(c);
+    }
 }
+/*
+
+ */
