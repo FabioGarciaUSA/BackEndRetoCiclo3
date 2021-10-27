@@ -39,14 +39,23 @@ public class Game implements Serializable {
     @ManyToOne
     @JoinColumn(name="categoryId")
     @JsonIgnoreProperties("games")
+    /**
+     * @param category pinta la relacion entre la tabla Game y Category.
+     */
     private Category category;
 
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "game")
     @JsonIgnoreProperties({"game","client"})
+    /**
+     * @param messages pinta la relacion entre la tabla Game y Message.
+     */
     private List<Message> messages;
 
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "game")
     @JsonIgnoreProperties({"game","message"})
+    /**
+     * @param reservation pinta la relacion entre la tabla Game y Reservation.
+     */
     public List<Reservation> reservations;
 
     public Integer getId() {
